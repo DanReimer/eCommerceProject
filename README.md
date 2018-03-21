@@ -1,24 +1,8 @@
-# README
+# RRC Full-Stack eCommerce Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An ecommerce store for Paper4Paper File Storage Solutions
 
-Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.5.0
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Project Proposal: https://docs.google.com/document/d/1B7I9Oq9iycfKUbjLx685MRt-DwlpqZkAT0NqUmeuxAI/edit?usp=sharing
