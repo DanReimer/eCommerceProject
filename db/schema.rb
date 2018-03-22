@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322152332) do
+ActiveRecord::Schema.define(version: 20180322154936) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20180322152332) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.boolean "is_admin?"
+    t.boolean "is_admin?", default: false
     t.string "street"
     t.string "city"
     t.integer "province_id"

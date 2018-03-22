@@ -1,0 +1,21 @@
+<h1>Sign up</h1>
+<div>
+  <%= form_for @user do |f| %>
+    <%= render 'shared/error_messages' %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.label :street %>
+    <%= f.text_field :street %>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    <%= f.label :province %>
+    <%= f.collection_select(:province_id, Province.all, :id, :name) %>
+
+    <%= f.submit "Create new aacount" %>
+  <% end %>
+</div>
