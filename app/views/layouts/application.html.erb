@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ECommerce</title>
+    <title><%= yield(:title) %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,8 +10,10 @@
 
   <body>
     <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
+      <%= content_tag :div, msg, class: ["alert", "alert-#{name}"] %>
     <% end -%>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
