@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     # Username is case insensitive
-    user = User.where("lower(username) = ?", params[:session][:username].downcase).first
+    user = User.where('lower(username) = ?', params[:session][:username].downcase).first
 
     if user && user.authenticate(params[:session][:password])
       log_in user
