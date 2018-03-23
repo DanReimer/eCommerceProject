@@ -11,11 +11,11 @@ ActiveAdmin.register User do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :username, :street, :city, :province_id, :admin
+  permit_params :username, :street, :city, :province_id, :postal_code, :admin
 
   form do |f|
     f.semantic_errors
-    f.inputs :username, :street, :city, :province, :admin
+    f.inputs :username, :street, :city, :province, :postal_code, :admin
     f.actions
   end
 

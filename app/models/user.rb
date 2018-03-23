@@ -1,10 +1,11 @@
 class User < ApplicationRecord
 
   belongs_to :province
-  validates :street, :city, :province, presence: true
+  validates :street, :city, :province, :postal_code, presence: true
 
-  # Username is case insensitive TODO: not sure if I want this
-  # before_save { self.username.downcase! }
+  VALID_CA_POSTAL_CODE = /\A[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}[ -]?\d{1}[A-Z]{1}\d{1}\z/i
+  validates :postal_code, format: { with: VALID_CA_POSTAL_CODE }
+  before_save { postal_code.upcase! }
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 50 }
 
