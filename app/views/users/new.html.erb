@@ -17,15 +17,15 @@
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :street %>
+        <%= f.label :street, class: "required" %>
         <%= f.text_field :street, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :city %>
+        <%= f.label :city, class: "required" %>
         <%= f.text_field :city, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :province %>
+        <%= f.label :province, class: "required" %>
         <%= f.collection_select(:province_id, Province.all, :id, :name, {}, { class: "form-control" }) %>
       </div>
         <%= f.submit "Create new account", class: "btn btn-primary" %>
