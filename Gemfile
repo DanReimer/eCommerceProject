@@ -60,5 +60,6 @@ gem 'cancan'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'jquery-rails'
 
 
