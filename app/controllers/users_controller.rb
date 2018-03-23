@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    authorize! :show, @user
   end
 
   def new
@@ -19,7 +20,8 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :street, :city, :province_id)
-    end
+
+  def user_params
+    params.require(:user).permit(:username, :password, :password_confirmation, :street, :city, :province_id, :postal_code)
+  end
 end

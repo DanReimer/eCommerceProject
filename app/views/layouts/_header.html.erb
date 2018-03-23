@@ -5,11 +5,27 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% unless logged_in? %>
-        <li><%= link_to "Login", login_path %></li>
-        <li><%= link_to "Sign up", signup_path %></li>
+        <li>
+          <%= link_to login_path do %>
+            Log in <i class="glyphicon glyphicon-log-in"></i>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to signup_path do %>
+            Sign up <i class="glyphicon glyphicon-bell"></i>
+          <% end %>
+        </li>
       <% else %>
-        <li><%= link_to "Logout", logout_path, method: :delete %></li>
-        <li><%= link_to current_user.username, current_user %></li>
+        <li>
+          <%= link_to logout_path, method: :delete do %>
+            Log out <i class="glyphicon glyphicon-log-out"></i>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to current_user do %>
+            <%= current_user.username %> <i class="glyphicon glyphicon-user"></i>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
