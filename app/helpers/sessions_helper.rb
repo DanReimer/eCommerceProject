@@ -9,8 +9,21 @@ module SessionsHelper
     @current_user = nil
   end
 
-  # Returns current user (with caching)
+  def admin_logout_path
+    log_out
+    root_path
+  end
+
+  # Returns current user
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def authenticate_admin
+    logged_in? ? current_user.admin : false
+  end
+
+  def logged_in?
+    !!current_user
   end
 end

@@ -56,6 +56,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activeadmin'
 # gem 'devise'
 gem 'bcrypt'
+gem 'cancan'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+
+
