@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
 
-
   def authenticate_admin_user!
     logged_in? ? current_user.admin : false
   end
