@@ -7,7 +7,7 @@
       <% unless logged_in? %>
         <li>
           <%= link_to login_path do %>
-            Log in <i class="glyphicon glyphicon-log-in"></i>
+            Log in <i class="fas fa-sign-in-alt"></i>
           <% end %>
         </li>
         <li>
@@ -18,7 +18,7 @@
       <% else %>
         <li>
           <%= link_to logout_path, method: :delete do %>
-            Log out <i class="glyphicon glyphicon-log-out"></i>
+            Log out <i class="fas fa-sign-out-alt"></i>
           <% end %>
         </li>
         <li>

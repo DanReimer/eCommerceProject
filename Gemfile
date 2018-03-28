@@ -58,8 +58,9 @@ gem 'activeadmin'
 gem 'bcrypt'
 gem 'cancan'
 
-gem 'bootstrap-sass'
-gem 'autoprefixer-rails'
+gem 'bootstrap', '~> 4.0.0'
+gem 'sprockets-rails', '>= 2.3.2'
+gem 'font-awesome-sass', '~> 5.0.6'
 gem 'jquery-rails'
 
 

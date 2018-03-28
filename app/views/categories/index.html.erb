@@ -1,0 +1,24 @@
+<% provide(:title, "Home") %>
+<h1>Home Page</h1>
+<section>
+  <% @categories.each do |category| %>
+    <div class="card">
+      <div class="card-header" data-toggle="collapse" data-target="#category<%= category.id %>">
+        <span class="float-right glyphicon glyphicon-circle-arrow-down"></span>
+        <%= category.name %>
+      </div>
+      <div id="category<%= category.id %>" class="collapse">
+        <div class="card-body">
+          <% category.products.each do |product| %>
+            <div class="card">
+              <div class="card-body">
+                <%= product.name %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
+
