@@ -7,6 +7,6 @@
   font-size: large;
 }
 
-.field_with_errors {
-  @extend .is-valid;
+.field_with_errors .form-control {
+  @extend .is-invalid;
 }
