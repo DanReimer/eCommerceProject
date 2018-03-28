@@ -1,19 +1,19 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 offset-md-3">
     <h2 ><span class="fas fa-user text-muted"></span> Your Profile</h2>
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Address</h3>
+    <div class="card">
+      <div class="card-header bg-info">
+        <h3 class="card-title">Address</h3>
       </div>
-      <div class="panel-body">
-        <p><%= "#{@user.street}<br>#{@user.city}, #{@user.province.abbreviation}<br>#{@user.postal_code}".html_safe %></p>
+      <div class="card-body">
+        <p class="card-text"><%= "#{@user.street}<br>#{@user.city}, #{@user.province.abbreviation}<br>#{@user.postal_code}".html_safe %></p>
       </div>
     </div>
   </div>
 </div>
 <% if @user.admin %>
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 text-center">
+    <div class="col-lg-6 offset-lg-3 text-center">
       <h5>You have admin privileges.<br>Click here to access site management tools.</h5>
       <%= link_to "Admin Dashboard", "/admin", class: "btn btn-success" %>
     </div>

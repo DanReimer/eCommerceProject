@@ -1,29 +1,30 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to "P4P", root_path, class: "navbar-brand" %>
-    </div>
-    <ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <%= link_to "P4P", root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
       <% unless logged_in? %>
-        <li>
-          <%= link_to login_path do %>
+        <li class="nav-item">
+          <%= link_to login_path, class: 'nav-link' do %>
             Log in <i class="fas fa-sign-in-alt"></i>
           <% end %>
         </li>
-        <li>
-          <%= link_to signup_path do %>
-            Sign up <i class="glyphicon glyphicon-bell"></i>
+        <li class="nav-item">
+          <%= link_to signup_path, class: 'nav-link' do %>
+            Sign up <i class="fas fa-bell"></i>
           <% end %>
         </li>
       <% else %>
-        <li>
-          <%= link_to logout_path, method: :delete do %>
+        <li class="nav-item">
+          <%= link_to logout_path, method: :delete, class: 'nav-link' do %>
             Log out <i class="fas fa-sign-out-alt"></i>
           <% end %>
-        </li>
-        <li>
-          <%= link_to current_user do %>
-            <%= current_user.username %> <i class="glyphicon glyphicon-user"></i>
+        </li >
+        <li class="nav-item">
+          <%= link_to current_user, class: 'nav-link' do %>
+            <%= current_user.username %> <i class="fas fa-user"></i>
           <% end %>
         </li>
       <% end %>
