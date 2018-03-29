@@ -11,3 +11,5 @@ An ecommerce store for Paper4Paper File Storage Solutions
 * Error on active admin comment delete
 * Active Admin logout just redirects (no sign-out)
 * Browser caching allows back navigation to restricted pages
+* Missing quantity field in product purchase form
+* Does Active Admin need to be responsive and usable on small devices?

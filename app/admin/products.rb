@@ -11,7 +11,7 @@ ActiveAdmin.register Product do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :category_id, :name, :price, :description, colour_ids: []
+  permit_params :category_id, :name, :price, :description, :image, :remove_image, colour_ids: []
 
   index do
     selectable_column
@@ -24,6 +24,10 @@ ActiveAdmin.register Product do
     column :category
     column "Colours" do |product|
       product.colours.map(&:name).join(", ")
+    end
+    column :image do |product|
+      image = product.image
+      image.attached? ? link_to(image.filename, url_for(image)) : ''
     end
     column :created_at
     column :updated_at
@@ -50,6 +54,8 @@ ActiveAdmin.register Product do
       f.input :category
       f.input :price
       f.input :description
+      f.input :image, as: :file
+      f.input :remove_image, as: :boolean, required: false, label: 'Remove Image'
       f.input :colours, as: :check_boxes, collection: Colour.all, label: "Avaliable Colours"
     end
     f.actions

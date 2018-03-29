@@ -54,11 +54,13 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Admin gems
 gem 'activeadmin'
 # gem 'devise'
 gem 'bcrypt'
 gem 'cancan'
 
+# Client side gems
 gem 'bootstrap', '~> 4.0.0'
 gem 'sprockets-rails', '>= 2.3.2'
 gem 'font-awesome-sass', '~> 5.0.6'
