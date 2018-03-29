@@ -11,11 +11,11 @@
   <body>
     <%= render 'layouts/header' %>
     <% flash.each do |name, msg| -%>
-      <%= content_tag :div, class: %W(alert alert-dismissible alert-#{name}) do %>
+      <%= tag.div class: %W(alert alert-dismissible alert-#{name}) do %>
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <%= msg %>
       <% end %>
-    <% end -%>
+    <% end %>
     <div id="page-content" class="container pt-3">
       <%= yield %>
     </div>
