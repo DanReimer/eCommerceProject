@@ -1,2 +1,23 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1><%= @product.name %></h1>
+<div class="row">
+  <form class="card col-md-4">
+    <!-- TODO Image will go here -->
+    <h5 class="text-primary"><%= number_to_currency @product.price %></h5>
+    <%= link_to 'Add To Cart', '#', class: 'btn btn-primary' %>
+    <hr>
+    <p>Pick A Colour:</p>
+      <% @product.colours.each do |colour| %>
+        <div class="form-check" style="background-color: <%= colour.hexcode %>">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" id="<%= colour.id %>" name="colourRadio">
+            <%= colour.name %>
+          </label>
+        </div>
+      <% end %>
+  </form>
+  <div class="col-md-8">
+    <%= tag.p @product.category.name, class: 'text-muted' %>
+    <hr>
+    <%= simple_format @product.description %>
+  </div>
+</div>
