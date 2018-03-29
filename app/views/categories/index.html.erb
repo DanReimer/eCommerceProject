@@ -1,18 +1,23 @@
 <% provide(:title, "Home") %>
-<h1>Home Page</h1>
-<section>
+<h2>Browse Products</h2>
+<section id="categories">
   <% @categories.each do |category| %>
     <div class="card mb-3">
       <div class="card-header" data-toggle="collapse" data-target="#category<%= category.id %>">
-        <h4><%= category.name %><span class="float-right mt-2 fas fa-chevron-down"></span></h4>
+        <h4><%= category.name %><span class="float-right fas fa-chevron-down"></span></h4>
       </div>
       <div id="category<%= category.id %>" class="collapse">
         <div class="card-body">
           <div class="row">
             <% category.products.each do |product| %>
-              <div class="card">
+              <div class="card product-card">
+                <%= link_to '', product_path(product), class: 'block-link' %>
                 <div class="card-body">
-                  <p class="card-text"><%= product.name %></p>
+                  <p class="card-text">
+                    <%= product.name %>
+                    <br>
+                    <span class="small text-primary"><%= number_to_currency product.price %></span>
+                  </p>
                 </div>
               </div>
             <% end %>
@@ -22,4 +27,3 @@
     </div>
   <% end %>
 </section>
-
