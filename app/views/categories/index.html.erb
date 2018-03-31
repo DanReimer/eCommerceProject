@@ -16,6 +16,11 @@
             <% category.products.each do |product| %>
               <div class="card product-card">
                 <%= link_to '', product_path(product), class: 'block-link' %>
+                <div class="card-header p-0">
+                  <% if product.image.attached? %>
+                    <%= image_tag product.image.variant(resize: '150x150'), class: 'w-100' %>
+                  <%end %>
+                </div>
                 <div class="card-body">
                   <p class="card-text">
                     <%= product.name %>

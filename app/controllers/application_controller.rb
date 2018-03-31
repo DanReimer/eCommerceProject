@@ -10,8 +10,4 @@ class ApplicationController < ActionController::Base
     flash[:warning] = exception.message
     redirect_to root_path
   end
-
-  def authenticate_admin_user!
-    logged_in? ? current_user.admin : false
-  end
 end

@@ -45,7 +45,7 @@ ActiveAdmin.register Product do
         product.colours.map(&:name).join(', ')
       end
       row :image do
-        image_tag product.image.variant(resize:'100x100')
+        image_tag product.image.variant(resize:'100x100') if product.image.attached?
       end
     end
     active_admin_comments

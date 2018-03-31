@@ -5,6 +5,7 @@
 .product-card {
   margin: 0px 10px 10px 0px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  max-width: 14em;
 
   position: relative;
   .block-link {
@@ -24,3 +25,4 @@
 .product-card:hover {
   background-color: #e7e0ca;
 }
+
