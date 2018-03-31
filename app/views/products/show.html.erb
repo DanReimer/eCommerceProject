@@ -2,7 +2,11 @@
 <h1><%= @product.name %></h1>
 <div class="row">
   <form class="card col-md-4">
-    <!-- TODO Image will go here -->
+    <% if @product.image.attached? %>
+      <figure>
+        <%= image_tag @product.image.variant(resize: '200x200') %>
+      </figure>
+    <% end %>
     <h5 class="text-primary"><%= number_to_currency @product.price %></h5>
     <%= link_to 'Add To Cart', '#', class: 'btn btn-primary' %>
     <hr>
