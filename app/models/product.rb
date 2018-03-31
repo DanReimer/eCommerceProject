@@ -17,4 +17,12 @@ class Product < ApplicationRecord
   validates :name, length: { maximum: 128 }
 
   has_one_attached :image
+
+  private
+
+  def process_image_upload
+    if self.image.attached?
+
+    end
+  end
 end

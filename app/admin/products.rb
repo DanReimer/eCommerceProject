@@ -1,4 +1,5 @@
 ActiveAdmin.register Product do
+  require 'mini_magick'
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -22,8 +23,8 @@ ActiveAdmin.register Product do
       product.description.truncate(50, separator: /\w+/)
     end
     column :category
-    column "Colours" do |product|
-      product.colours.map(&:name).join(", ")
+    column 'Colours' do |product|
+      product.colours.map(&:name).join(', ')
     end
     column :image do |product|
       image = product.image
@@ -41,7 +42,10 @@ ActiveAdmin.register Product do
       row :price
       row :description
       row :colours do
-        product.colours.map(&:name).join(", ")
+        product.colours.map(&:name).join(', ')
+      end
+      row :image do
+        image_tag product.image.variant(resize:'100x100')
       end
     end
     active_admin_comments
@@ -56,7 +60,7 @@ ActiveAdmin.register Product do
       f.input :description
       f.input :image, as: :file
       f.input :remove_image, as: :boolean, required: false, label: 'Remove Image'
-      f.input :colours, as: :check_boxes, collection: Colour.all, label: "Avaliable Colours"
+      f.input :colours, as: :check_boxes, collection: Colour.all, label: 'Avaliable Colours'
     end
     f.actions
   end

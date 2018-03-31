@@ -59,6 +59,7 @@ gem 'activeadmin'
 # gem 'devise'
 gem 'bcrypt'
 gem 'cancan'
+gem 'mini_magick'
 
 # Client side gems
 gem 'bootstrap', '~> 4.0.0'

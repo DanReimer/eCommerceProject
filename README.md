@@ -7,6 +7,11 @@ An ecommerce store for Paper4Paper File Storage Solutions
 * Project Proposal: https://docs.google.com/document/d/1B7I9Oq9iycfKUbjLx685MRt-DwlpqZkAT0NqUmeuxAI/edit?usp=sharing
 ---
 
+## Installation Notes
+ * In order to use the image magick tool to resize images, your vagrant VM needs to be updated. 
+ Running `sudo apt-get install` was enough to get this to work for me.
+---
+
 ## Outstanding issues
 * Error on active admin comment delete
 * Active Admin logout just redirects (no sign-out)
