@@ -18,11 +18,14 @@ class Product < ApplicationRecord
 
   has_one_attached :image
 
-  private
+  def self.search(search, category_filter)
+    if search
+      result = where('name LIKE ?', "%#{search}%")
+      result = result.where(category_id: category_filter) unless category_filter.blank?
 
-  def process_image_upload
-    if self.image.attached?
-
+      result
+    else
+      none
     end
   end
 end
