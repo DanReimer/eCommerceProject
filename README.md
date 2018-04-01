@@ -18,3 +18,4 @@ An ecommerce store for Paper4Paper File Storage Solutions
 * Browser caching allows back navigation to restricted pages
 * Missing quantity field in product purchase form
 * Does Active Admin need to be responsive and usable on small devices?
+* Why don't the product cards in the search results use horizontal space?

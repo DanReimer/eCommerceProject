@@ -1,11 +1,11 @@
 <% provide(:title, 'Search') %>
-<%= form_tag products_path, :method => 'get', :id => "products_search", class: 'form-inline' do %>
-  <%= label_tag :category_filter, 'Filter by category: ' %>
-  <%= select_tag(:category_filter, options_from_collection_for_select(Category.all, :id, :name, selected: params[:category_filter]), prompt: 'All', class: 'form-control') %>
+<%= form_tag products_path, method: 'get', id: "products_search", class: 'form-inline' do %>
+  <%= label_tag :category_filter, 'Filter by category:' %>
+  <%= select_tag(:category_filter, options_from_collection_for_select(Category.all, :id, :name, selected: params[:category_filter]), prompt: 'All', class: 'form-control mr-3') %>
   <%= label_tag :sort_by, 'Sort By:' %>
-  <%= select_tag :sort_by, options_for_select([['Name', :name], ['Price', :price]], params[:sort_by]), class: 'form-control' %>
-  <%= select_tag :direction, options_for_select([%w(Ascending asc), %w(Descending desc)], params[:direction]), class: 'form-control' %>
-  <%= text_field_tag :search, params[:search], class: 'form-control', hint: 'Search for products' %>
+  <%= select_tag :sort_by, options_for_select([['Name', :name], ['Price', :price]], params[:sort_by]), class: 'form-control mr-1' %>
+  <%= select_tag :direction, options_for_select([%w(Ascending asc), %w(Descending desc)], params[:direction]), class: 'form-control mr-3' %>
+  <%= text_field_tag :search, params[:search], class: 'form-control mr-2', placeholder: 'Search for products' %>
   <%= submit_tag "Search", name: nil, class: 'btn btn-primary' %>
 <% end %>
 <p>Results (<%= @products.size %>):</p>
