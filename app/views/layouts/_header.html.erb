@@ -4,6 +4,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item"><%= link_to 'Search Products', products_path, class: 'nav-link' %></li>
+    </ul>
     <ul class="navbar-nav ml-auto">
       <% unless logged_in? %>
         <li class="nav-item">
