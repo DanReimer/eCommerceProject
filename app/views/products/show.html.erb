@@ -1,25 +1,25 @@
 <% provide(:title, @product.name) %>
 <h1><%= @product.name %></h1>
 <div class="row">
-  <form class="card col-md-4">
+  <div class="card col-md-4">
     <% if @product.image.attached? %>
       <figure>
         <%= image_tag @product.image.variant(resize: '200x200') %>
       </figure>
     <% end %>
     <h5 class="text-primary"><%= number_to_currency @product.price %></h5>
-    <%= link_to 'Add To Cart', '#', class: 'btn btn-primary' %>
-    <hr>
-    <p>Pick A Colour:</p>
+    <%= form_for OrderItem.new, url: {action: "create"} do |f| %>
+      <p>Pick A Colour:</p>
       <% @product.colours.each do |colour| %>
         <div class="form-check" style="background-color: <%= colour.hexcode %>">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input" id="<%= colour.id %>" name="colourRadio">
-            <%= colour.name %>
-          </label>
+          <%= f.radio_button :colour_id, colour.id %>
         </div>
       <% end %>
-  </form>
+      <hr>
+      <%= f.number_field :quantity, 1, class: 'form-control' %>
+      <%= f.submit 'Add To Cart', class: 'btn btn-primary mt-1' %>
+    <% end %>
+  </div>
   <div class="col-md-8">
     <%= tag.p @product.category.name, class: 'text-muted' %>
     <hr>
