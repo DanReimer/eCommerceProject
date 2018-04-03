@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  has_many :orders
   belongs_to :province
   validates :street, :city, :province, :postal_code, presence: true
 

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'orders/show'
   root 'categories#index'
   resources :products, only: [:show, :index]
+  resources :orders
+  resources :order_items
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

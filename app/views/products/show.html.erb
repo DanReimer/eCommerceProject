@@ -8,16 +8,21 @@
       </figure>
     <% end %>
     <h5 class="text-primary"><%= number_to_currency @product.price %></h5>
-    <%= form_for OrderItem.new, url: {action: "create"} do |f| %>
+    <!-- TODO show errors -->
+    <%= form_tag order_items_path, method: 'post' do %>
+      <%= hidden_field :order_item, :product_id, value: @product.id %>
+      <!-- TODO add order_id hidden field -->
       <p>Pick A Colour:</p>
       <% @product.colours.each do |colour| %>
         <div class="form-check" style="background-color: <%= colour.hexcode %>">
-          <%= f.radio_button :colour_id, colour.id %>
+          <%= radio_button :order_item, :colour_id, colour.id  %>
+          <%= label :order_item, :colour_id, colour.name %>
         </div>
       <% end %>
       <hr>
-      <%= f.number_field :quantity, 1, class: 'form-control' %>
-      <%= f.submit 'Add To Cart', class: 'btn btn-primary mt-1' %>
+      <%= label :order_item, :quantity %>
+      <%= number_field :order_item, :quantity, value: 1, class: 'form-control' %>
+      <%= submit_tag 'Add To Cart', class: 'btn btn-primary mt-1' %>
     <% end %>
   </div>
   <div class="col-md-8">
