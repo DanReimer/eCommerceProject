@@ -4,7 +4,7 @@ class Order < ApplicationRecord
   has_many :order_items
 
   before_create :set_initial_state
-  before_save :update_subtotal
+  before_save :update_subtotal, :update_tax_amounts
 
   validates :user, presence: true
   validates :subtotal, presence: true, numericality: { greater_than_or_equal_to: 0 }
@@ -41,5 +41,20 @@ class Order < ApplicationRecord
 
   def update_subtotal
     self[:subtotal] = subtotal
+  end
+
+  def update_tax_amounts
+    province = user.province
+    self.gst_amount = calc_tax_amount province.gst_rate
+    self.pst_amount = calc_tax_amount province.pst_rate
+    self.hst_amount = calc_tax_amount province.hst_rate
+  end
+
+  def calc_tax_amount(rate)
+    if rate.nil?
+      nil
+    else
+      subtotal * rate
+    end
   end
 end

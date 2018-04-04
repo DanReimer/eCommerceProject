@@ -2,14 +2,13 @@
   <div class="card-body row">
     <div class="col-sm-7">
       <h4>
-        <%= product.name %><br>
-        <%= colour.name %>
+        <%= product.name %> <small>- [<%= colour.name %>]</small>
       </h4>
     </div>
     <div class="col-sm-5">
       <%= form_for order_item, remote: true do |f| %>
         <h5 class="text-right">Item Price: <span class="text-primary"><%= number_to_currency order_item.price_per_item %></span></h5>
-        <h5 class="text-right">Item Total: <span class="text-primary"><%= number_to_currency order_item.total_price %></span></h5>
+        <h5 class="text-right">Total: <span class="text-primary"><%= number_to_currency order_item.total_price %></span></h5>
         <div class="row">
           <div class="col-xs-4 ml-auto">
             <%= f.number_field :quantity, value: order_item.quantity, class: "form-control", min: 1 %>
