@@ -11,4 +11,13 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
+
+  def in_progress_order
+    in_progress_orders = orders.where(order_state_id: 1)
+    if in_progress_orders.empty?
+      orders.new(order_state_id: 1)
+    else
+      in_progress_orders.take
+    end
+  end
 end

@@ -1,3 +1,7 @@
+<div class="clearfix">
+  <%= render 'orders/checkout_button' unless @order_items.empty? %>
+  <h2>Shopping Cart</h2>
+</div>
 <% if @order_items.empty? %>
   <p class="text-center text-muted">There are no items in your shopping cart.</p>
 <% else %>
@@ -6,5 +10,6 @@
                                    colour: order_item.colour,
                                    order_item: order_item %>
   <% end %>
-  <%= render 'orders/totals', order: @order, order_items: @order_items %>
+  <%= render 'orders/totals', order: @order, order_items: @order_items, just_subtotal: true %>
+  <%= render 'orders/checkout_button' %>
 <% end %>

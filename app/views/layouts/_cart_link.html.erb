@@ -1,0 +1,3 @@
+<%= link_to cart_path, class: 'nav-link' do %>
+  Cart<%= "(#{current_order.order_items.size})" unless current_order.order_items.empty? %> <i class="fas fa-shopping-cart"></i>
+<% end %>

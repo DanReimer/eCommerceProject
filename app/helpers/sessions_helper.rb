@@ -2,7 +2,6 @@ module SessionsHelper
   # Starts session with passed user
   def log_in(user)
     session[:user_id] = user.id
-    session[:order_id] = Order.in_progress_order(user).id
   end
 
   def log_out
@@ -25,9 +24,7 @@ module SessionsHelper
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def current_order
-    @current_order ||= Order.find_by(id: session[:order_id])
-  end
+
 
   def authenticate_admin
     logged_in? ? current_user.admin : false

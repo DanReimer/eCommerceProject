@@ -8,27 +8,30 @@
       <li class="nav-item"><%= link_to 'Search Products', products_path(search: ''), class: 'nav-link' %></li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <% unless logged_in? %>
+      <li class="nav-item" id="cart_link_item">
+        <%= render 'layouts/cart_link' %>
+      </li>
+      <% if logged_in? %>
         <li class="nav-item">
-          <%= link_to login_path, class: 'nav-link' do %>
-            Log in <i class="fas fa-sign-in-alt"></i>
-          <% end %>
+          <%=  link_to logout_path, method: :delete, class: 'nav-link' do  %>
+            Log out <i class="fas fa-sign-out-alt"></i>
+          <%  end  %>
         </li>
         <li class="nav-item">
-          <%= link_to signup_path, class: 'nav-link' do %>
-            Sign up <i class="fas fa-bell"></i>
-          <% end %>
+          <%=  link_to current_user, class: 'nav-link' do  %>
+            <%= current_user.username %> <i class="fas fa-user"></i>
+          <%  end  %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to logout_path, method: :delete, class: 'nav-link' do %>
-            Log out <i class="fas fa-sign-out-alt"></i>
-          <% end %>
-        </li >
+          <%=  link_to login_path, class: 'nav-link' do  %>
+            Log in <i class="fas fa-sign-in-alt"></i>
+          <%  end  %>
+        </li>
         <li class="nav-item">
-          <%= link_to current_user, class: 'nav-link' do %>
-            <%= current_user.username %> <i class="fas fa-user"></i>
-          <% end %>
+          <%=  link_to signup_path, class: 'nav-link' do  %>
+            Sign up <i class="fas fa-bell"></i>
+          <%  end  %>
         </li>
       <% end %>
     </ul>

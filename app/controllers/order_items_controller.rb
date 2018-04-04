@@ -8,7 +8,7 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.new(item_params)
 
     if @order.save
-      redirect_to order_path(current_order)
+      redirect_to cart_path
     else
       flash[:danger] = 'Unable to add item to cart. Please check your order.'
       redirect_to product_path(item_params[:product_id])
