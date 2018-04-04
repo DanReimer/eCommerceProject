@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h4>Totals:</h4>
+  </div>
+  <div class="col-sm-4">
+    <table class="table">
+      <tr>
+        <td>Subtotal:</td>
+        <td><%= number_to_currency order.subtotal %></td>
+      </tr>
+      <% unless order.gst_amount.nil? %>
+        <tr>
+          <td>GST:</td>
+          <td><%= number_to_currency order.gst_amount %></td>
+        </tr>
+      <% end %>
+      <% unless order.pst_amount.nil? %>
+        <tr>
+          <td>PST:</td>
+          <td><%= number_to_currency order.pst_amount %></td>
+        </tr>
+      <% end %>
+      <% unless order.hst_amount.nil? %>
+        <tr>
+          <td>HST:</td>
+          <td><%= number_to_currency order.hst_amount %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><strong>Total:</strong></td>
+        <td><strong><%= number_to_currency order.total %></strong></td>
+      </tr>
+    </table>
+  </div>
+</div>

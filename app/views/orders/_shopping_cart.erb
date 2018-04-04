@@ -1,0 +1,10 @@
+<% if @order_items.empty? %>
+  <p class="text-center text-muted">There are no items in your shopping cart.</p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'orders/cart_item', product: order_item.product,
+                                   colour: order_item.colour,
+                                   order_item: order_item %>
+  <% end %>
+  <%= render 'orders/totals', order: @order, order_items: @order_items %>
+<% end %>

@@ -1,17 +1,32 @@
 class OrderItemsController < ApplicationController
   before_action :require_login
-  before_action :fetch_product_price
+  before_action :fetch_product_price, only: [:create, :update]
+  respond_to :html, :js
 
   def create
-    @order_item = OrderItem.new(item_params)
-    @order_item.order = current_order
+    @order = current_order
+    @order_item = @order.order_items.new(item_params)
 
-    if @order_item.save
+    if @order.save
       redirect_to order_path(current_order)
     else
       flash[:danger] = 'Unable to add item to cart. Please check your order.'
       redirect_to product_path(item_params[:product_id])
     end
+  end
+
+  def update
+    @order = current_order
+    @order_item = @order.order_items.find(params[:id])
+    @order_item.update_attributes(item_params)
+    @order_items = @order.order_items
+  end
+
+  def destroy
+    @order = current_order
+    @order_item = @order.order_items.find(params[:id])
+    @order_item.destroy
+    @order_items = @order.order_items
   end
 
   private
