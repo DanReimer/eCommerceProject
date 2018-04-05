@@ -3,7 +3,8 @@ class Order < ApplicationRecord
   belongs_to :order_state
   has_many :order_items
 
-  # TODO deal with initial state.
+  before_validation :default_user
+  # TODO: deal with initial state.
   # There are probably some bugs around the creation and retrieval of orders ight now.
   # before_create :set_initial_state
   before_save :update_subtotal, :update_tax_rates
@@ -25,7 +26,7 @@ class Order < ApplicationRecord
     if persisted?
       self[:gst_rate]
     else
-      user.province.gst_rate
+      user&.province&.gst_rate
     end
   end
 
@@ -37,7 +38,7 @@ class Order < ApplicationRecord
     if persisted?
       self[:pst_rate]
     else
-      user.province.pst_rate
+      user&.province&.pst_rate
     end
   end
 
@@ -49,7 +50,7 @@ class Order < ApplicationRecord
     if persisted?
       self[:hst_rate]
     else
-      user.province.hst_rate
+      user&.province&.hst_rate
     end
   end
 
@@ -83,5 +84,9 @@ class Order < ApplicationRecord
     else
       subtotal * rate
     end
+  end
+
+  def default_user
+    self.user ||= User.new
   end
 end

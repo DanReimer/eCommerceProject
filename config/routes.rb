@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :order_items, only: %i[create update destroy]
 
   get '/cart', to: 'orders#show'
+  get '/checkout/address', to: 'orders#checkout_address'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

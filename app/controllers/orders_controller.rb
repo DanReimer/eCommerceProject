@@ -4,6 +4,6 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
-  def checkout
+  def checkout_address
   end
 end

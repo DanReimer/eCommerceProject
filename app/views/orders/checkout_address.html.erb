@@ -1,0 +1,9 @@
+<% if logged_in? %>
+  <!-- TODO: allow users to edit their saved address -->
+  <h4>Using saved address for purchase:</h4>
+  <div class="col-md-6 offset-md-3">
+    <%= render current_user, card_title: 'Saved Information' %>
+  </div>
+<% else %>
+
+<% end %>

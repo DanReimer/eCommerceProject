@@ -1,0 +1,11 @@
+<div class="card user-card">
+  <div class="card-header bg-primary text-white">
+    <h3 class="card-title"><i class="fas fa-user"></i> <%= card_title %></h3>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><strong>Name:</strong> <%= user.username %></p>
+    <p class="card-text mb-0"><strong>Address:</strong></p>
+    <hr class="mt-0">
+    <p class="card-text"><%= "#{user.street}<br>#{user.city}, #{user.province.abbreviation}<br>#{user.postal_code}".html_safe %></p>
+  </div>
+</div>
