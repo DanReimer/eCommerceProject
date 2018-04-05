@@ -3,30 +3,30 @@
     <table class="table">
       <tr>
         <td><strong>Subtotal:</strong></td>
-        <td><strong><%= number_to_currency order.subtotal %></strong></td>
+        <td class="text-right"><strong><%= number_to_currency order.subtotal %></strong></td>
       </tr>
       <% unless just_subtotal %>
         <% unless order.gst_amount.nil? %>
           <tr>
             <td>GST:</td>
-            <td><%= number_to_currency order.gst_amount %></td>
+            <td class="text-right"><%= number_to_currency order.gst_amount %></td>
           </tr>
         <% end %>
         <% unless order.pst_amount.nil? %>
           <tr>
             <td>PST:</td>
-            <td><%= number_to_currency order.pst_amount %></td>
+            <td class="text-right"><%= number_to_currency order.pst_amount %></td>
           </tr>
         <% end %>
         <% unless order.hst_amount.nil? %>
           <tr>
             <td>HST:</td>
-            <td><%= number_to_currency order.hst_amount %></td>
+            <td class="text-right"><%= number_to_currency order.hst_amount %></td>
           </tr>
         <% end %>
         <tr>
           <td><strong>Total:</strong></td>
-          <td><strong><%= number_to_currency order.total %></strong></td>
+          <td class="text-right"><strong><%= number_to_currency order.total %></strong></td>
         </tr>
       <% end %>
     </table>

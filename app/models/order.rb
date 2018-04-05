@@ -23,7 +23,7 @@ class Order < ApplicationRecord
   end
 
   def gst_rate
-    if persisted?
+    if placed?
       self[:gst_rate]
     else
       user&.province&.gst_rate
@@ -35,7 +35,7 @@ class Order < ApplicationRecord
   end
 
   def pst_rate
-    if persisted?
+    if placed?
       self[:pst_rate]
     else
       user&.province&.pst_rate
@@ -47,7 +47,7 @@ class Order < ApplicationRecord
   end
 
   def hst_rate
-    if persisted?
+    if placed?
       self[:hst_rate]
     else
       user&.province&.hst_rate
@@ -59,6 +59,10 @@ class Order < ApplicationRecord
       (gst_amount ? gst_amount : 0) +
       (pst_amount ? pst_amount : 0) +
       (hst_amount ? hst_amount : 0)
+  end
+
+  def placed?
+    order_state.name == 'Placed'
   end
 
   private
