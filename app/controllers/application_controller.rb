@@ -9,11 +9,7 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if session[:order_id].nil?
-      if logged_in?
-        current_user.in_progress_order
-      else
-        Order.new(order_state_id: 1)
-      end
+      Order.new(order_state_id: 1)
     else
       @current_order ||= Order.find(session[:order_id])
     end

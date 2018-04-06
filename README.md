@@ -16,11 +16,10 @@ An ecommerce store for Paper4Paper File Storage Solutions
 * Error on active admin comment delete
 * Active Admin logout just redirects (no sign-out)
 * Browser caching allows back navigation to restricted pages
-* Missing quantity field in product purchase form
 * Does Active Admin need to be responsive and usable on small devices?
 * Why don't the product cards in the search results use horizontal space?
 * Consider moving _cart_item.html.erb and _invoice_item.erb to the views/order_items folder. 
 
 ## Bug
-* Place Order > Go to product page and add a new item to cart.
+* [maybe fixed?] Place Order > Go to product page and add a new item to cart.
 You should have that item in your cart as well as a classic folder.
