@@ -14,10 +14,13 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "Welcome to P4P's online store, #{@user.username}!"
 
-      
-      redirect_to root_path
+      if params[:redirect] == checkout_path
+        redirect_to checkout_path
+      else
+        redirect_to root_path
+      end
     else
-      render 'new'
+      render 'new', redirect: params[:redirect]
     end
   end
 

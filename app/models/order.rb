@@ -14,6 +14,15 @@ class Order < ApplicationRecord
             numericality: { greater_than_or_equal_to: 0 },
             allow_nil: true
 
+  def place_order
+    if placed?
+      raise Exception, 'order already placed'
+    else
+      update_tax_rates
+      self.order_state_id = 2
+    end
+  end
+
   def subtotal
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.price_per_item.to_f) : 0 }.sum
   end

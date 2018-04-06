@@ -7,7 +7,7 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order_item = @order.order_items.new(item_params)
 
-    if @order.save!
+    if @order.save
       session[:order_id] = @order.id
       redirect_to cart_path
     else

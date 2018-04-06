@@ -5,7 +5,7 @@ class Product < ApplicationRecord
     @remove_image || false
   end
 
-  before_validation { self.image.purge if self.remove_image == '1' }
+  before_validation { image.purge if remove_image == '1' }
 
   belongs_to :category
   has_many :order_items
@@ -15,6 +15,7 @@ class Product < ApplicationRecord
   validates :name, :price, :description, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :name, length: { maximum: 128 }
+  validates :colours, presence: true
 
   has_one_attached :image
 

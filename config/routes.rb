@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get '/cart', to: 'orders#show'
   get '/checkout', to: 'orders#checkout'
+  patch '/placeorder', to: 'orders#place_order'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
