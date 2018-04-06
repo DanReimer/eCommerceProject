@@ -2,7 +2,7 @@
 
 # Categories used for separating products into subsets.
 class Category < ApplicationRecord
-  has_many :products
+  has_many :products, dependent: :restrict_with_error
 
   validates :name, presence: true, uniqueness: true
 end

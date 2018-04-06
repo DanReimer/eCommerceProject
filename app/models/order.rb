@@ -3,7 +3,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :order_state
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
 
   before_validation :default_user
   # TODO: deal with initial state.
@@ -17,12 +17,10 @@ class Order < ApplicationRecord
             allow_nil: true
 
   def place_order
-    if placed?
-      raise Exception, 'order already placed'
-    else
-      update_tax_rates
-      self.order_state_id = 2
-    end
+    raise Exception, 'order already placed' if placed?
+
+    update_tax_rates
+    self.order_state_id = 2
   end
 
   def subtotal
@@ -67,9 +65,9 @@ class Order < ApplicationRecord
 
   def total
     subtotal +
-      (gst_amount ? gst_amount : 0) +
-      (pst_amount ? pst_amount : 0) +
-      (hst_amount ? hst_amount : 0)
+      (gst_amount || 0) +
+      (pst_amount || 0) +
+      (hst_amount || 0)
   end
 
   def placed?

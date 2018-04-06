@@ -2,7 +2,7 @@
 
 # Province names and tax rates.
 class Province < ApplicationRecord
-  has_many :users
+  has_many :users, dependent: :restrict_with_error
 
   validates :gst_rate, :pst_rate, :hst_rate,
             numericality: { greater_than_or_equal_to: 0 },

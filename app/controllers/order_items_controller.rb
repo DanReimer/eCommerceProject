@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class OrderItemsController < ApplicationController
-  # before_action :require_login
-  before_action :fetch_product_price, only: [:create, :update]
+  before_action :fetch_product_price, only: %i[create update]
   respond_to :html, :js
 
   def create
@@ -33,13 +32,6 @@ class OrderItemsController < ApplicationController
   end
 
   private
-  
-  def require_login
-    unless logged_in?
-      flash[:warning] = 'Log in to add items to your cart.'
-      redirect_to login_path
-    end
-  end
 
   def fetch_product_price
     @product_price = Product.find(item_params[:product_id]).price

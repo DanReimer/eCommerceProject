@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Colour < ApplicationRecord
-  has_many :order_items
+  has_many :order_items, dependent: :restrict_with_error
   has_many :product_colours, dependent: :destroy
   has_many :products, through: :product_colours
 
