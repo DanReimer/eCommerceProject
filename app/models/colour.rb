@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Colour < ApplicationRecord
   has_many :order_items
   has_many :product_colours, dependent: :destroy

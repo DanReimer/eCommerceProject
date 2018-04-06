@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# A P4P product for sale
 class Product < ApplicationRecord
   attr_writer :remove_image
 
@@ -22,7 +25,10 @@ class Product < ApplicationRecord
   def self.search(search, category_filter)
     if search
       result = where('name LIKE ?', "%#{search}%")
-      result = result.where(category_id: category_filter) unless category_filter.blank?
+
+      unless category_filter.blank?
+        result = result.where(category_id: category_filter)
+      end
 
       result
     else

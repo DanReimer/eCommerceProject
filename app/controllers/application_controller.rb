@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Provide common methods to child ontrollers
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper

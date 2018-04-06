@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SessionsHelper
   # Starts session with passed user
   def log_in(user)
@@ -23,8 +25,6 @@ module SessionsHelper
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
   end
-
-
 
   def authenticate_admin
     logged_in? ? current_user.admin : false

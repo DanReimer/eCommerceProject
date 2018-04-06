@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User view actions
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
@@ -14,11 +17,7 @@ class UsersController < ApplicationController
       log_in @user
       flash[:success] = "Welcome to P4P's online store, #{@user.username}!"
 
-      if params[:redirect] == checkout_path
-        redirect_to checkout_path
-      else
-        redirect_to root_path
-      end
+      redirect_to(params[:redirect] || root_path)
     else
       render 'new', redirect: params[:redirect]
     end
@@ -27,6 +26,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :street, :city, :province_id, :postal_code)
+    params.require(:user).permit(:username,
+                                 :password,
+                                 :password_confirmation,
+                                 :street,
+                                 :city,
+                                 :province_id,
+                                 :postal_code)
   end
 end

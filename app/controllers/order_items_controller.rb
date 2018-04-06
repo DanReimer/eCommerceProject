@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrderItemsController < ApplicationController
   # before_action :require_login
   before_action :fetch_product_price, only: [:create, :update]
