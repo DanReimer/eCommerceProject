@@ -4,7 +4,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    authorize! :show, @user
+    authorize! :read, @user
   end
 
   def new
@@ -25,10 +25,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    authorize! :update, @user
   end
 
   def update
     @user = User.find(params[:id])
+    authorize! :update, @user
+
     @user.update_attributes(user_params)
 
     render 'show'

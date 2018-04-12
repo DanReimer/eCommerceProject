@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  # get 'orders/show'
   root 'categories#index'
   resources :products, only: %i[show index]
-  # resources :orders, only: :show
   resources :order_items, only: %i[create update destroy]
 
   get '/cart', to: 'orders#show'

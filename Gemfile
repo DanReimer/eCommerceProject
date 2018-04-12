@@ -61,7 +61,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'activeadmin'
 # gem 'devise'
 gem 'bcrypt'
-gem 'cancan'
+gem 'cancancan', '~> 2.0'
 gem 'mini_magick'
 
 # Client side gems

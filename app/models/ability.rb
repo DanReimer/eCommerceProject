@@ -35,7 +35,7 @@ class Ability
     if user.admin
       can :manage, :all
     else
-      can :read, User, id: user.id
+      can %i[read update], User, id: user.id
     end
   end
 end
