@@ -13,8 +13,8 @@ module SessionsHelper
   end
 
   def remove_order
+    current_order.destroy unless current_order.placed?
     session.delete(:order_id)
-    @current_order = nil
   end
 
   def admin_logout_path
@@ -24,6 +24,14 @@ module SessionsHelper
   # Returns current user
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def current_order
+    if session[:order_id].nil?
+      Order.new(order_state_id: 1)
+    else
+      @current_order ||= Order.find(session[:order_id])
+    end
   end
 
   def authenticate_admin

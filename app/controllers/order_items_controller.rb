@@ -10,10 +10,9 @@ class OrderItemsController < ApplicationController
 
     if @order.save
       session[:order_id] = @order.id
-      redirect_to cart_path
+      flash.now[:success] = 'Added item(s) to shopping cart.'
     else
-      flash[:danger] = 'Unable to add item to cart. Please check your order.'
-      redirect_to product_path(item_params[:product_id])
+      flash.now[:danger] = 'Unable to add item to cart. Please check your order.'
     end
   end
 

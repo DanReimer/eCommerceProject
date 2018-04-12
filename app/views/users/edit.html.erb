@@ -1,0 +1,7 @@
+<% provide(:title, "Edit Info") %>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1>Change your information</h1>
+    <%= render 'form', user: @user, submit_path: user_path, submit_label: 'Submit changes' %>
+  </div>
+</div>

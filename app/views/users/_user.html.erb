@@ -1,5 +1,8 @@
 <div class="card user-card">
   <div class="card-header bg-primary text-white">
+    <%= link_to edit_user_path(user.id), class: "float-right text-light" do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
     <h3 class="card-title"><i class="fas fa-user"></i> <%= card_title %></h3>
   </div>
   <div class="card-body">

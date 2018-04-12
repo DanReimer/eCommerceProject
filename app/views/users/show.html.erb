@@ -1,3 +1,4 @@
+<% provide(:title, 'Profile') %>
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <%= render @user, card_title: 'Your Profile' %>
@@ -9,5 +10,13 @@
       <h5>You have admin privileges.<br>Click here to access site management tools.</h5>
       <%= link_to "Admin Dashboard", "/admin", class: "btn btn-success" %>
     </div>
+  </div>
+<% end %>
+<h3>Order History</h3>
+<% @user.orders.each do |order| %>
+  <div class="border my-3 p-3">
+    <p class="float-right">Placed: <%= order.updated_at %></p>
+    <p>Invoice: #<%= order.id %></p>
+    <%= render 'orders/invoice_table', order: order %>
   </div>
 <% end %>

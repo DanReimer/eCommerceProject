@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   # TODO: deal with initial state.
   # There are probably some bugs around the creation and retrieval of orders ight now.
   # before_create :set_initial_state
-  before_save :update_subtotal, :update_tax_rates
+  before_save :update_subtotal
 
   validates :subtotal, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :gst_rate, :pst_rate, :hst_rate,

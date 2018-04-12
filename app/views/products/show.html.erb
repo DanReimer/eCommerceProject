@@ -4,12 +4,12 @@
   <div class="card col-md-4">
     <% if @product.image.attached? %>
       <figure>
-        <%= image_tag @product.image.variant(resize: '200x200') %>
+        <%= image_tag @product.image.variant(resize: '200x200'), alt: @product.name %>
       </figure>
     <% end %>
     <h5 class="text-primary"><%= number_to_currency @product.price %></h5>
     <!-- TODO show errors -->
-    <%= form_for(:order_item, url: order_items_path) do |f| %>
+    <%= form_for(:order_item, url: order_items_path, remote: true) do |f| %>
       <%= f.hidden_field :product_id, value: @product.id %>
       <p>Pick A Colour:</p>
       <% @product.colours.each do |colour| %>
@@ -21,7 +21,7 @@
       <hr>
       <%= f.label :quantity %>
       <%= f.number_field :quantity, value: 1, class: 'form-control' %>
-      <%= f.submit 'Add To Cart', class: 'btn btn-primary mt-1' %>
+      <%= f.submit 'Add To Cart', data: { disable_with: 'Adding...' }, class: 'btn btn-primary mt-1' %>
     <% end %>
   </div>
   <div class="col-md-8">

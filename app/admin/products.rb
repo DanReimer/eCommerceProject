@@ -1,17 +1,6 @@
 ActiveAdmin.register Product do
   require 'mini_magick'
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
+
   permit_params :category_id, :name, :price, :description, :image, :remove_image, colour_ids: []
 
   index do
@@ -45,7 +34,7 @@ ActiveAdmin.register Product do
         product.colours.map(&:name).join(', ')
       end
       row :image do
-        image_tag product.image.variant(resize:'100x100') if product.image.attached?
+        image_tag product.image.variant(resize:'100x100'), alt: product.name if product.image.attached?
       end
     end
     active_admin_comments
