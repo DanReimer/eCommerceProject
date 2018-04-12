@@ -1,0 +1,6 @@
+<% flash.each do |name, msg| -%>
+  <%= tag.div class: %W(alert alert-dismissible alert-#{name}) do %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= msg %>
+  <% end %>
+<% end %>

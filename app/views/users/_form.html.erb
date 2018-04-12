@@ -1,5 +1,5 @@
 <%= form_for user, url: submit_path do |f| %>
-  <%= render 'shared/error_messages' %>
+  <%= render 'shared/error_messages', model_obj: user %>
   <input type="hidden" name="redirect" value="<%= params[:checkout] %>" />
   <div class="form-group">
     <%= f.label :username, class: "required" %>

@@ -8,7 +8,6 @@
       </figure>
     <% end %>
     <h5 class="text-primary"><%= number_to_currency @product.price %></h5>
-    <!-- TODO show errors -->
     <%= form_for(:order_item, url: order_items_path, remote: true) do |f| %>
       <%= f.hidden_field :product_id, value: @product.id %>
       <p>Pick A Colour:</p>

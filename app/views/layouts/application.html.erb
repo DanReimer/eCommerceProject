@@ -12,12 +12,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <% flash.each do |name, msg| -%>
-      <%= tag.div class: %W(alert alert-dismissible alert-#{name}) do %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= msg %>
-      <% end %>
-    <% end %>
+    <div class="flashes"><%= render 'layouts/flash_element' %></div>
     <div id="page-content" class="container pt-3">
       <%= yield %>
     </div>

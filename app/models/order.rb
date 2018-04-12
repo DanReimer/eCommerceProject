@@ -6,9 +6,6 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   before_validation :default_user
-  # TODO: deal with initial state.
-  # There are probably some bugs around the creation and retrieval of orders ight now.
-  # before_create :set_initial_state
   before_save :update_subtotal
 
   validates :subtotal, presence: true, numericality: { greater_than_or_equal_to: 0 }
@@ -76,11 +73,6 @@ class Order < ApplicationRecord
 
   private
 
-  def set_initial_state
-    self.order_state_id = 1
-    self[:subtotal] = 0
-  end
-
   def update_subtotal
     self[:subtotal] = subtotal
   end
@@ -92,11 +84,7 @@ class Order < ApplicationRecord
   end
 
   def calc_tax_amount(rate)
-    if rate.nil?
-      nil
-    else
-      subtotal * rate
-    end
+    rate.nil? ? nil : subtotal * rate
   end
 
   def default_user

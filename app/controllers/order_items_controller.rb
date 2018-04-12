@@ -12,6 +12,7 @@ class OrderItemsController < ApplicationController
       session[:order_id] = @order.id
       flash.now[:success] = 'Added item(s) to shopping cart.'
     else
+      @order.order_items.delete(@order_item)
       flash.now[:danger] = 'Unable to add item to cart. Please check your order.'
     end
   end

@@ -13,11 +13,7 @@ class OrderItem < ApplicationRecord
                              allow_nil: true
 
   def price_per_item
-    if persisted?
-      self[:price_per_item]
-    else
-      product.price
-    end
+    persisted? ? self[:price_per_item] : product.price
   end
 
   def total_price
