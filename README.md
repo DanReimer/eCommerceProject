@@ -13,7 +13,7 @@ An ecommerce store for Paper4Paper File Storage Solutions
 ## Outstanding issues (For future improvments)
 * Error on active admin comment delete
 * Active Admin logout just redirects (no sign-out)
-* Browser caching allows back navigation to restricted pages
+* Browser caching allows back navigation to restricted pages after logout
 * There are some old orders in the DB which wouldn't be valid to enter now
 
 ## Bugs
