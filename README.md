@@ -15,6 +15,7 @@ An ecommerce store for Paper4Paper File Storage Solutions
 * Active Admin logout just redirects (no sign-out)
 * Browser caching allows back navigation to restricted pages after logout
 * There are some old orders in the DB which wouldn't be valid to enter now
+* Colour selection for products looks awful.
 
 ## Bugs
 * [fixed] Place Order > Go to product page and add a new item to cart.
